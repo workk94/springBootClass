@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<h1>리터럴</h1>
+<ul>
+    <!--th:text="" 사이에 문자열을 추가할 때 공백이 있으면 안됨  , 아래와 같은 방식을 사용해야 한다
+    -->
+    <!--    <li>"hello world!" = <span th:text="hello  hello"></span></li>-->
+    <li>'hi' + ' acorn!' = <span th:text="'hi' + ' acorn!'"></span></li>
+    <li>'hi  acorn' = <span th:text="'hi acorn' "></span></li>
+    <li>'hi ' + ${data} = <span th:text="'hi ' + ${data}"></span></li>
+
+    <li>리터럴 대체 |hello ${data}| = <span th:text="| hi    ${data} |"></span></li>
+
+    <!-- 오류발생
+    <li th:text="ddfd   dfdfdfdi"></li>
+
+
+     |      |  :기호로 묶어준다
+    -->
+    <li th:text="|ddfd   dfdfdfdi|"></li>
+</ul>
+
+</body>
+</html>

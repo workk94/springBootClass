@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+<h2>음식 정보 목록</h2>
+
+<table>
+    <tr th:each="item : ${foodList}">
+        <td th:text="${item.code}">음식코드</td>
+        <td th:text="${item.name}">음식이름</td>
+        <td th:text="${item.price}">음식가격</td>
+    </tr>
+</table>
+
+<h2> block Each 사용하기 </h2>
+
+<th:block th:each="item:${foodList}">
+    <div th:text="${item.code}"></div>
+    <div th:text="${item.name}"></div>
+    <div th:text="${item.price}"></div>
+</th:block>
+
+<h2> 모델의 데이터를 다른 문자열(리터럴)과 함께 출력하고 싶을 때</h2>
+<th:block th:each="item:${foodList}">
+
+    <div th:text="${item.code} + '코드^^'"></div>
+    <div th:text="|${item.name} 음식 ^_^|">음식 이름</div>
+    <div th:text="${item.price}"></div>
+
+</th:block>
+
+</body>
+</html>

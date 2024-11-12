@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+
+
+<h3> session 값과 param 정보 얻어오기</h3>
+<ul>
+    <li>Request Parameter = <span th:text="${param.param1}"></span></li>
+    <li>session = <span th:text="${session.sessionData}"></span></li>
+    <li th:text="${#session.getAttribute('sessionData')}"></li>
+
+
+</ul>
+
+</body>
+</html>

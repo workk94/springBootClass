@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+<h1>text vs utext</h1>
+<ul>
+    <li>th:text = <span th:text="${data}"></span></li>
+    <li>th:utext = <span th:utext="${data}"></span></li>
+</ul>
+
+th:text  ?
+<p>HTML 이스케이프가 적용된 텍스트 출력 , 태그가 그대로 출력됨</p>
+
+<br>
+
+th:utext  ?
+<p>  HTML 이스케이프가 없는 텍스트 출력 </p>
+<p>HTML 태그나 포맷이 포함된 문자열을 그대로 렌더링하고 싶을 때 사용 : 주의 사항: Xss 공격 </p>
+
+
+<h1> inline:none : 그대로 출력함 , 해석되어지지 않음 </h1>
+
+<ul>
+    <li><span th:inline="none">[[ ... ]]</span>  </li>
+    <li><span >[[ ... ]] = </span>  </li>
+</ul>
+
+</body>
+</html>

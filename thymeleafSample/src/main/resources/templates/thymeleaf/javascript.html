@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+<!-- 자바스크립트 인라인 사용 전 -->
+<script>
+
+    let username1 = ' [[${user.username}]] ' ;     //  'userA'
+    let age1 = [[${user.age}]];
+
+    //객체
+   // let user = [[${user}]];  // 자바객의 toString된 결과가 생김
+</script>
+
+<!-- 자바스크립트 인라인 사용 후 -->
+<!-- 객체를 json으로 넘겨줌 -->
+
+
+<script th:inline="javascript">
+    let  username2 = [[${user.username}]];
+    let  age2 = [[${user.age}]];
+
+    //객체 json으로  사용가능함
+     let user = [[${user}]];
+
+
+
+
+
+</script>
+
+
+<script th:inline="javascript">
+
+
+     let users  =  [[ ${users} ]];
+
+
+    users.forEach(  (a, b)=>{
+      console.log( "a" + a.username );
+    });
+
+</script>
+
+</body>
+</html>

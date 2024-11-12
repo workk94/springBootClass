@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link th:href="@{/css/hello.css}" rel="stylesheet" >
+    <script th:src="@{/js/hello.js}"></script>
+</head>
+<body>
+
+
+이미지
+<!-- 서버의 컨텍스트 루트를 기준으로 특정 폴더의 리소스를 제공함  -->
+<!--<img src="<c:url value='/imgs/a.png' />" >  -->
+<img  th:src="@{/imgs/a.png}" alt="cute img" >
+
+
+
+<button onclick="hi()"> 클릭</button>
+</body>
+</html>

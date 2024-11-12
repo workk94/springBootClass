@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+<h2>  타임리프  !!!  </h2>
+<p>  </p>
+
+<h2> 낯선듯 닮은 듯</h2>
+
+
+
+
+<h3> input  태그에 모델 값 보여주기</h3>
+
+<input type="text" name="userid" th:value="${userid}"  value="내용" >
+
+
+<hr>
+<h2>   <h2>텍스트표현식 &#91;&#91;  &#93;&#93;</h2>  </h2>
+<p>
+     구문은 HTML 태그 밖에서도 텍스트를 표현할 수 있게 해줌 , 단일 태그일 경우 사용 (닫히는 태그 없는경유)
+</p>
+<input type="checkbox" name="hobby"  th:value="${hobby}" > [[ ${hobby}]]
+
+
+<hr>
+
+<br>
+<h3> span 태그에 모델 값 보여주기   , 태그 사이에 값 넣어주기 </h3>
+<span th:text="${userid}">내용</span>
+<span > [[ ${userid}]]</span>
+
+
+<hr>
+<h3>리스트 모델 보여주기</h3>
+<ul>
+    <li th:each="item : ${list}" th:text="${item}"> 리스트 목록 </li>
+</ul>
+
+
+<hr>
+<h3>리스트 모델 보여주기  block반복문  : 여러문장을 반복문으로 사용하고 싶을 때</h3>
+<ul>
+    <th:block th:each="item  : ${list}"  >
+
+
+         <li th:text=" ${item} +  '^__^' ">   </li>
+         <span  th:text="|${item}  ^^^^|"></span>
+
+
+    </th:block>
+</ul>
+
+</body>
+</html>

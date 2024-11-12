@@ -1,0 +1,17 @@
+Name for argument of type [java.lang.String] not specified, and parameter name information not available via reflection. Ensure that the compiler uses
+
+
+
+1)
+
+build.gradle  추가
+
+tasks.withType(JavaCompile) {
+    options.compilerArgs << '-parameters'
+}
+
+
+2)  파일->setting -> 빌드.실행.배포 -> 컴파일러 -> 자바컴파일러  - > Addtional command line parameters 에
+
+아래 옵션 추가
+-parameters

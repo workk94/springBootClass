@@ -1,0 +1,13 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<h2>약수 구하기</h2>
+<ul>
+  <li th:each="item : ${list}" th:text="${item}"></li>
+</ul>
+</body>
+</html>

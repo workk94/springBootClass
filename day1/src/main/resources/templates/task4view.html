@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+<h2>에이콘 학생 정보</h2>
+
+<div th:text="${acorn.id}">ID</div>
+<div th:text="${acorn.pw}">PASSWORD</div>
+<div th:text="${acorn.name}">NAME</div>
+
+<img th:src="@{/imgs/회원목록.png}" alt="img">
+</body>
+</html>

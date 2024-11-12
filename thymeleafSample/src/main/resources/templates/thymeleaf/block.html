@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+<h2>  block </h2>
+<p>   block 태그는 Thymeleaf에서 HTML 요소로 렌더링되지 않도록 하기 위해 사용함 </p>
+
+<th:block th:each="user : ${users}">
+    <div>
+         이름 <span th:text="${user.username}"></span>
+         나이 <span th:text="${user.age}"></span>
+    </div>
+</th:block>
+
+</body>
+</html>

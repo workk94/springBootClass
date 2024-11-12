@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+<h1> class 추가하기</h1>
+
+- th:attrappend = <input type="text" class="text"  th:attrappend="class=' large'" /><br/>
+- th:attrprepend = <input type="text" class="text" th:attrprepend="class='large '" />
+
+
+- th:classappend = <input type="text" class="text" th:classappend="large" /><br/>
+
+
+
+<h2> th:checked flag 값이 false아면 나타나지 않음 </h2>
+<h1>checked 처리</h1>
+- checked o <input type="checkbox" name="active" th:checked="${flag1}" /><br/>
+- checked x <input type="checkbox" name="active" th:checked="${flag2}" /><br/>
+
+- checked=false <input type="checkbox" name="active" checked="false" /><br/>
+
+</body>
+</html>

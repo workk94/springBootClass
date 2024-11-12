@@ -1,0 +1,6 @@
+
+
+   로컬에 받아둔 라이브러리가 문제가 생겼을 때 삭제함..
+
+   File > Invalidate Caches  ->   clear file system   local    선택->Restart를 클릭
+   Invalidate and Restart
