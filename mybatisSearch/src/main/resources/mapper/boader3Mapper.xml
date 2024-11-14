@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.acorn.BoardMapper3">   
+
+    <!-- Select statement for searching by title -->
+    <select id="getBoardListByTitle" resultType="BoardDTO" parameterType="String">
+        SELECT * FROM boardt
+        WHERE title LIKE '%'||#{keyword}||'%'
+        ORDER BY board_no DESC   
+    </select>
+
+    <!-- Select statement for searching by writer -->
+    <select id="getBoardListByWriter" resultType="BoardDTO" parameterType="String">
+        SELECT * FROM boardt
+        WHERE writer LIKE '%'||#{keyword}||'%'
+        ORDER BY board_no DESC   
+    </select>
+
+    <!-- Select statement for searching by content -->
+    <select id="getBoardListByContent" resultType="BoardDTO" parameterType="String">
+        SELECT * FROM boardt
+        WHERE content LIKE '%'||#{keyword}||'%'
+        ORDER BY board_no DESC   
+    </select>
+
+</mapper>

@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Title</title>
+
+    <script>
+      function updateMember() {
+        alert('fsdf');
+
+        let id = document.getElementById('id').value;
+        let name = document.getElementById('name').value;
+        let email = document.getElementById('email').value;
+
+        let jsonData = { id: id, name: name, email: email };
+        console.log(jsonData);
+
+        //fetch
+        fetch(`/members/${id}`, {
+          method: 'put',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify(jsonData),
+        })
+          .then((response) => {
+            return response.text();
+          })
+          .then((data) => {
+            console.log(data);
+          })
+          .catch((err) => {
+            console.log(err);
+          });
+      }
+    </script>
+  </head>
+  <body>
+    <form action="">
+      <input type="text" id="id" />
+      <input type="text" id="name" />
+      <input type="text" id="email" />
+      <button onclick="updateMember()">수정</button>
+    </form>
+  </body>
+</html>

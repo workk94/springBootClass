@@ -1,0 +1,10 @@
+
+
+drop table membertbl;
+
+
+CREATE TABLE membertbl (
+    id   varchar2(10) primary key  ,
+    name VARCHAR2(50),
+    email VARCHAR2(50)
+);

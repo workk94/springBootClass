@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Title</title>
+
+    <script>
+      function deleteMember() {
+        //alert('fsdf');
+
+        let id = document.getElementById('id').value;
+
+        let jsonData = { id: id };
+        console.log(jsonData);
+
+        //fetch
+        fetch(`/members/${id}`, {
+          method: 'delete',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify(jsonData),
+        })
+          .then((response) => {
+            return response.text();
+          })
+          .then((data) => {
+            console.log(data);
+          })
+          .catch((err) => {
+            console.log(err);
+          });
+      }
+    </script>
+  </head>
+
+  <body>
+    <input type="text" id="id" />
+    <button onclick="deleteMember()">삭제</button>
+  </body>
+</html>

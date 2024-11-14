@@ -1,0 +1,6 @@
+
+
+객체생성  @Component   -> @Controller  , @Service  , @Repository   나뉜다 ( 의미적이름: 같은기능이다)
+객체주입 (Injection )  : @Autowired
+
+

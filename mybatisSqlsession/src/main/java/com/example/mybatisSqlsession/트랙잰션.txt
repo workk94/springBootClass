@@ -1,0 +1,47 @@
+Transaction이란?
+모두 수행되거나  수행되지 말아야 하는 논리적인 일의 단위를 말한다 .
+스프링부트는
+
+
+
+기본적으로 RuntimeException계열 롤백처리됨
+그러나 @Transactional에서 SQLIntegrityConstraintViolationException 예외는 기본적으로 롤백처리됨 (제약조건에 대한 오류)
+
+
+
+명시적으로 표현할 수 있음
+@Transactional(rollbackFor = SQLException.class)
+public void insertMember(String id, String name, String email) throws SQLException {
+    // 삽입 작업
+}
+
+
+
+##################트랜잭션 예시##########
+@Service
+public class MemberService {
+
+    private final MemberRepository memberRepository;
+    private final PointsService pointsService;
+    private final EmailService emailService;
+
+    // 생성자 주입을 사용하여 의존성 주입
+    public MemberService(MemberRepository memberRepository, PointsService pointsService, EmailService emailService) {
+        this.memberRepository = memberRepository;
+        this.pointsService = pointsService;
+        this.emailService = emailService;
+    }
+
+    @Transactional
+    public void registerMember(Member member) {
+        // 1. 회원 정보 저장
+        memberRepository.save(member);
+
+        // 2. 포인트 적립
+        pointsService.addPoints(member);
+
+        // 3. 이메일 인증
+        emailService.sendConfirmationEmail(member);
+    }
+}
+

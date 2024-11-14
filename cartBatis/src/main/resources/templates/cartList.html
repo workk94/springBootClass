@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>장바구니</title>
+    <script>
+        function order() {
+            let frm = document.frm;
+            let goods_Qty = document.frm.goods_Qty;
+            let goods_no = document.frm.goodsNo;
+            let h_orderItemContainer = document.getElementById("h_orderItemContainer"); // 히든 필드 컨테이너
+            let ck = document.frm.ck;  // 체크박스
+
+            h_orderItemContainer.innerHTML = "";
+
+
+            for (let i = 0; i < ck.length; i++) {
+                if (ck[i].checked) {  // 선택된 항목만 히든 필드 만들고 추가
+                    let hiddenField = document.createElement("input");
+                    hiddenField.type = "hidden";
+                    hiddenField.name = "h_orderItem";
+                    hiddenField.value = goods_no[i].value + ":" + goods_Qty[i].value;
+                    h_orderItemContainer.appendChild(hiddenField); //
+                }
+            }
+
+            frm.submit();
+        }
+    </script>
+</head>
+<body>
+
+<h2>장바구니 리스트</h2>
+<form name="frm" th:action="@{/order}" method="post">
+    <table>
+        <th:block th:each="item, st : ${session.cartMap['goodsList']}">
+            <tr>
+                <td>선택 <input type="checkbox" name="ck" checked></td>
+                <td>상품코드: <input type="text" name="goodsNo" th:value="${item.goodsNo}" readonly></td>
+                <td>상품명: <span th:text="${item.name}"></span></td>
+                <td>
+                    수량:
+                    <input type="text" name="goods_Qty" th:value="${session.cartMap['cartList'][st.index].cartQty}">
+                    <!-- 장바구니번호 (삭제, 변경할 때 사용) -->
+                    <input type="hidden" name="h_cartNo" th:value="${session.cartMap['cartList'][st.index].cartNO}">
+                </td>
+            </tr>
+        </th:block>
+        <tr>
+            <td><button type="button" onclick="order()">주문하기</button></td>
+        </tr>
+    </table>
+
+    <!-- 히든 필드들이 추가될 컨테이너 -->
+    <div id="h_orderItemContainer"></div>
+</form>
+
+</body>
+</html>

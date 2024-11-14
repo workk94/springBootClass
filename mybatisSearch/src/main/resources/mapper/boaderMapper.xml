@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.acorn.BoardMapper1">   
+
+
+   	<sql id="search">
+   		<if test="condition == 'title'">
+   			<!-- 검색조건이 title이라면 -->
+   			where title LIKE '%'||#{keyword}||'%'
+   		</if>
+   		<if test="condition == 'writer'">
+   			<!-- 검색조건이 writer라면 -->
+   			where writer LIKE '%'||#{keyword}||'%'
+   		</if>
+   		<if test="condition == 'content'">
+   			<!-- 검색조건이 content라면 -->
+   			where content LIKE '%'||#{keyword}||'%'
+   		</if>
+   	</sql>
+
+
+   
+   <select id="getBoardList" resultType="BoardDTO"   parameterType="SearchCondition">
+   			    SELECT * FROM   boardt
+   				<include refid="search" />
+   				<!-- sql태그에서 맞춰진 조건에 따라 WHERE 실행 -->
+   				ORDER BY board_no DESC   
+   	</select>
+   	
+     
+</mapper>

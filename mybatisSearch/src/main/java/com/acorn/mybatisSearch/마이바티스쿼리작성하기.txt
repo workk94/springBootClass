@@ -1,0 +1,27 @@
+MyBatis에서 ${}와 #{}는 각각 다르게 동작하는 기능
+코드에서 사용된 ${condition}은 MyBatis의 문자열 치환을 의미하며, #{keyword}는 쿼리 파라미터 바인딩
+
+
+
+${} 조건 검색시  조건의 대상의 컬럼값으로 치환할 때 사용함
+condition 변수에 저장된 값이 쿼리 내에 직접 삽입됩
+
+
+    select * from
+    where 	${condition}  LIKE '%' || #{keyword} || '%'
+
+
+    condition="title"
+    keyword="자바"
+
+
+    =>
+
+     select * from
+     where 	title  LIKE '%' || ?  || '%'
+
+
+
+
+
+

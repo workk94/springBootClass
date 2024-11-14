@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Title</title>
+
+    <script>
+      function registerMember(event) {
+        event.preventDefault(); // submit되지 않도록 하기
+
+        let id = document.querySelector('#id').value; // #($id).val()
+        let name = document.querySelector('#name').value;
+        let email = document.querySelector('#email').value;
+
+        console.log(id);
+
+        //fetch 비동기로 등록요청
+
+        //let jsonData = {} ;
+
+        let jsonData = { id: id, name: name, email: email };
+        fetch('/members', {
+          method: 'post',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify(jsonData),
+        })
+          .then((reponse) => reponse.text())
+          .then((data) => {
+            console.log('성공');
+            console.log(data);
+          })
+          .catch((err) => {
+            console.log(err);
+          });
+      }
+    </script>
+  </head>
+  <body>
+    <form onsubmit="registerMember(event)">
+      <input type="text" name="id" id="id" />
+      <input type="text" name="name" id="name" />
+      <input type="text" name="email" id="email" />
+      <button>등록</button>
+    </form>
+  </body>
+</html>

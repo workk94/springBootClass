@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Title</title>
+
+    <script>
+      function getData() {
+        alert('dfjdkfjdfd');
+
+        fetch('/members')
+          .then((response) => response.json())
+          .then((data) => {
+            //화면에 보여주기
+
+            console.log(data);
+            /*
+            let strData = '<ul>';
+            for (let i = 0; i < data.length; i++) {
+              let member = data[i];
+              console.log(member);
+              strData += `<li> ${member.name}  ${member.email} </li>`;
+
+              alert(strData);
+            }
+            strData += '</ul>';
+            */
+
+            //data.forEach(function(member) {});
+            let strData = '<ul>';
+            data.forEach((member) => {
+              strData += `<li> ${member.name} ${member.email} </li>`;
+            });
+            strData += '</ul>';
+
+            let result = document.querySelector('#result');
+            result.innerHTML = strData;
+          })
+          .catch((error) => {
+            console.log(error);
+          });
+      }
+    </script>
+  </head>
+  <body>
+    <button onclick="getData()">고객전체조회</button>
+    <div id="result"></div>
+  </body>
+</html>

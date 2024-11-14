@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+  <meta charset="UTF-8">
+  <title>주문정보</title>
+  <style>
+    table{
+        width:600px;
+        border:1px solid black;
+    }
+    td{
+        border:1px solid black;
+    }
+  </style>
+</head>
+<body>
+
+<h2>주문정보</h2>
+
+<table>
+  <th:block th:each="item : ${orderList}">
+    <tr>
+      <td th:text="${item.goodsNo}"></td>
+      <td th:text="${item.goodsName}"></td>
+      <td th:text="${item.qty}"></td>
+      <td th:text="${item.amount}"></td>
+    </tr>
+  </th:block>
+</table>
+
+<form th:action="@{/orderFinal}" method="post">
+  <h2>배송지 정보</h2>
+  <input type="text" name="addr1" />
+  <input type="text" name="addr2" />
+  <input type="text" name="tel" />
+  <input type="text" name="name" />
+
+  <button type="submit">결제완료</button>
+</form>
+
+</body>
+</html>

@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>타임리프와 Fetch 조회하기</title>
+
+    <script>
+
+        function getData() {
+         // 서버에서 데이터 가져오기
+         fetch('/members')
+             .then(response => response.json())
+             .then(data => {
+                 // 가져온 데이터가 여러 개일 때
+                 let htmlContent = ''; // HTML을 담을 변수 초기화
+
+                 // data는 배열이므로 forEach로 반복
+                 data.forEach(member => {
+                     // 각 멤버의 정보를 HTML로 생성하여 htmlContent에 추가
+                     htmlContent += `
+                         <div>
+                             <p>아이디: ${member.id}, 이름: ${member.name}</p>
+                         </div>
+                     `;
+                 });
+
+                 // 최종적으로 생성된 HTML을 itemData에 삽입
+                 document.getElementById('itemData').innerHTML = htmlContent;
+             })
+             .catch(error => {
+                 console.error('데이터 가져오기 실패:', error);
+             });
+            }
+
+    </script>
+</head>
+<body>
+<h1>서버에서 가져온 데이터:</h1>
+
+<div id="itemData"></div>
+
+<button onclick="getData()"> 데이터 가져오기</button>
+
+
+
+
+<button onclick="getFetch()">fetch</button>
+<button onclick="getFetch2()">fetch2</button>
+
+<script>
+
+    function getFetch(){
+      fetch('/members')
+      .then(response => response.json())
+      .then(json => {
+        console.log( "성공데이터" );
+        console.log(json);
+      })
+      .catch( err => {
+       console.log( "오류발생");
+       console.log( err) ;
+      });
+
+    }
+
+function getFetch2() {          //네트워크오류만 catch로 넘어감
+  fetch('/memberss')            //일부러 잘못된 요청 보냄
+    .then(response => {
+      if (!response.ok) {   // 상태 코드가 200-299가 아니면 오류로 처리
+        throw new Error(`HTTP error! status: ${response.status}`);
+      }
+      return response.json(); // JSON으로 변환
+    })
+    .then(json => {
+      console.log("성공데이터");
+      console.log(json);
+    })
+    .catch(err => {
+      console.log("오류발생");
+      console.log(err);
+    });
+}
+
+</script>
+
+</body>
+</html>

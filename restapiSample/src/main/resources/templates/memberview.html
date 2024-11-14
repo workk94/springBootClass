@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>타임리프와 Fetch 예제</title>
+
+    <script>
+
+        function getData(){
+
+           let id="acorn1";
+
+            // 서버에서 데이터 가져오기
+              fetch(`/members/${id}`)
+                .then(response => response.json())
+                .then(data => {
+                    // 가져온 데이터를 HTML에 표시
+                    document.getElementById('itemData').innerHTML =
+                        `아이디: ${data.id},  이름: ${data.name}`;
+                })
+                .catch(error => {
+                    console.error('데이터 가져오기 실패:', error);
+                });
+        }
+    </script>
+</head>
+<body>
+<h1>서버에서 가져온 데이터:</h1>
+
+<div id="itemData"></div>
+
+<button onclick="getData()"> 데이터 가져오기</button>
+
+</body>
+</html>
