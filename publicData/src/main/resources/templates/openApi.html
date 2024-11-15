@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+  <meta charset="UTF-8">
+  <title>Insert title here</title>
+  <style>
+    table, tr, td {
+        border: 1px solid black;
+        border-collapse: collapse;
+    }
+
+    img {
+        width: 50px;
+        height: 120px;
+    }
+  </style>
+</head>
+<body>
+<table>
+  <!-- Thymeleaf로 반복문 처리 -->
+  <div th:each="item : ${list}">
+    <!-- imageUrl1부터 imageUrl6까지가 null이 아닌 경우에만 보여짐 -->
+    <tr th:if="${item.imageUrl1 != 'null' and item.imageUrl2 != 'null' and item.imageUrl3 != 'null' and item.imageUrl4 != 'null' and item.imageUrl5 != 'null' and item.imageUrl6 != 'null'}">
+      <td th:text="${item.informData}"></td>
+      <td>
+        <span th:text="${item.informGrade}"></span>
+        <div>
+          <img th:src="${item.imageUrl1}" alt="Image 1">
+          <img th:src="${item.imageUrl2}" alt="Image 2">
+          <img th:src="${item.imageUrl3}" alt="Image 3">
+          <img th:src="${item.imageUrl4}" alt="Image 4">
+          <img th:src="${item.imageUrl5}" alt="Image 5">
+          <img th:src="${item.imageUrl6}" alt="Image 6">
+        </div>
+      </td>
+      <td th:text="${item.informCause}"></td>
+    </tr>
+  </div>
+</table>
+</body>
+</html>

@@ -1,0 +1,75 @@
+
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="utf-8">
+    <title>여러개 마커 표시하기</title>
+</head>
+<body>
+<div id="map" style="width:100%;height:350px;"></div>
+
+
+<script  type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=c2c80cc59eb12ce43927bf1f9cfe0196"></script>
+
+
+
+<!-- 자바스크립트 인라인으로 사용하면  json객체로 사용할 수 있음 -->
+
+<script  th:inline="javascript" >
+    var mapContainer = document.getElementById('map');
+    var mapOption = {
+        center: new kakao.maps.LatLng(35.190165, 126.808852),
+        level: 2
+    };
+
+    var map = new kakao.maps.Map(mapContainer, mapOption);
+
+
+
+    let positions =  [[ ${ item2} ]]    ;   //모델에 저장된 데이터를 꺼내올 수 있다.
+    console.log( positions);
+
+    /*
+    var positions = [
+        {
+            title: 'ddfdf',
+            latlng: new kakao.maps.LatLng(35.190165, 126.808852)
+        },
+        {
+            title: '77777',
+            latlng: new kakao.maps.LatLng(35.139558, 126.793159)
+        }
+    ];
+    */
+
+
+
+   // 마커이미지
+    var imageSrc = "https://png.pngtree.com/png-clipart/20190516/original/pngtree-vector-shop-icon-png-image_3762863.jpg";
+   //마커 크기
+    var imageSize = new kakao.maps.Size(35, 35);
+    var markerImage = new kakao.maps.MarkerImage(imageSrc, imageSize);
+
+    for (let i = 0; i < positions.length; i++) {
+           let position = positions[i];
+
+            console.log( position);
+
+
+            //json 객체를  kakao LatLng객체로 생성하기
+            let   latlng  =  new  kakao.maps.LatLng( position.la , position.lg);
+
+            let marker = new kakao.maps.Marker({
+                map: map,
+                position: latlng,     //이 부분 변경
+                title: positions[i].title,
+                image: markerImage
+            });
+    }
+
+
+
+
+</script>
+</body>
+</html>

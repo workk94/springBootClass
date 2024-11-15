@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+  <meta charset="UTF-8">
+  <title>Data Table</title>
+  <style>
+    table, td {
+      border: solid black 1px;
+      text-align: center;
+      border-collapse: collapse;
+    }
+  </style>
+</head>
+<body>
+
+<h2>Data Table</h2>
+
+<table>
+  <thead>
+  <tr>
+    <th>Inform Grade</th>
+    <th>Inform Cause</th>
+    <th>Data Time</th>
+  </tr>
+  </thead>
+  <tbody>
+  <!-- 리스트의 각 DataDto 객체를 출력 -->
+  <tr th:each="data : ${result}">
+    <td th:text="${data.informGrade}"></td>
+    <td th:text="${data.informCause}"></td>
+    <td th:text="${data.dataTime}"></td>
+  </tr>
+  </tbody>
+</table>
+
+</body>
+</html>

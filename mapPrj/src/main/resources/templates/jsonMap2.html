@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="utf-8">
+</head>
+<body>
+<div id="code" style="width:100%;height:350px;"></div>
+
+<select id="bigCode">
+    <option>선택하시오</option>
+    <option value="서울">서울</option>
+    <option value="경기">경기</option>
+</select>
+
+<select id="middleCode">
+</select>
+
+<script th:inline="javascript">
+    let codeJson =  [[${code}]]   ;  // codeJson은 모델에서 전달된 JSON 데이터  (자바객체를 json으로 변환해줌!)
+
+
+    console.log( "모델로 전달된 값 확인하기 ") ;
+    console.log(  codeJson ) ;
+
+    document.getElementById('bigCode').addEventListener('change', function () {
+
+        const selectedRegion = this.value; // "서울" 또는 "경기" 선택값
+        const middleCodeSelect = document.getElementById('middleCode');
+
+        // 중간 코드 옵션을 초기화
+        middleCodeSelect.innerHTML = '';
+
+
+       //선택한 지역의 구 정보 얻어오기
+       let middle  = codeJson[selectedRegion];
+
+       for( let i=0; i < middle.length; i++) {
+            let item  = middle[i];
+            let  option = document.createElement('option');
+            option.value = item.code;
+            option.textContent = item.name;   // option 태그 사이의 값
+            middleCodeSelect.appendChild(option);
+
+        }
+
+    });
+</script>
+</body>
+</html>

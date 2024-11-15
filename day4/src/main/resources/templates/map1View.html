@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+  <meta charset="utf-8"/>
+  <title>Kakao 지도 시작하기</title>
+</head>
+<body>
+<div id="map" style="width:500px;height:400px;"></div>
+<script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=cb8ba4713ce7951a6dc693028efc83d4"></script>
+<script>
+  let container = document.getElementById('map');
+  let options = {
+      center: new kakao.maps.LatLng(33.450701, 126.570667),
+      level: 3
+  };
+
+  let map = new kakao.maps.Map(container, options);
+</script>
+</body>
+</html>

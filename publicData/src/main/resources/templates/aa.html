@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+
+
+
+//thymeleaf의 JavaScript 템플릿 주석   JavaScript의 주석 안에 Thymeleaf의 변수를 삽입하여 서버에서만 해석되도록함
+// 브라우저로 열면  null값만 대입됨
+
+
+   let username = /* [[${aa}]] */  'null' ;
+
+
+    console.log(  username ) ;
+</script>
+</body>
+</html>

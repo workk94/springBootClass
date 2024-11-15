@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+  <style >
+    div {
+        border: 2px solid black;
+        border-radius: 20px;
+        padding: 20px;
+    }
+    img {
+        height: 222px;
+    }
+    .a {
+        height: 222px;
+    }
+    .b {
+        width: 1200px;
+        margin: 0 auto;
+        margin-bottom: 20px;
+    }
+  </style>
+  <meta charset="UTF-8">
+  <title>Insert title here</title>
+</head>
+<body>
+<div>
+  <!-- Thymeleaf로 리스트를 반복하여 표시 -->
+  <div th:each="item : ${list}">
+    <!-- item.imageUrl1이 'null'이 아닐 때만 보여줌 -->
+    <div th:if="${item.imageUrl1 != 'null'}" class="b">
+
+      <div class="a">
+        <img th:src="${item.imageUrl1}" alt="Image 1">
+        <img th:src="${item.imageUrl2}" alt="Image 2">
+        <img th:src="${item.imageUrl3}" alt="Image 3">
+        <img th:src="${item.imageUrl4}" alt="Image 4">
+        <img th:src="${item.imageUrl5}" alt="Image 5">
+        <img th:src="${item.imageUrl6}" alt="Image 6">
+      </div>
+
+    </div>
+
+    <h2 th:text="${item.informData}"></h2>
+    <p>
+      <span th:text="${item.informCode}"></span> ※통보코드(PM10, PM25, O3) <br>
+    </p>
+    <p>
+      <span th:text="${item.informCause}"></span> <br>
+      <span th:text="${item.informOverall}"></span> <br>
+    </p>
+
+    <p>
+      <span th:text="${item.informGrade}"></span> <br>
+      발표 시간 : <span th:text="${item.dataTime}"></span>
+    </p>
+  </div>
+</div>
+</body>
+</html>
