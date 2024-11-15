@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<!-- namespace : 보통 패키지 이름 들어감 -->
+<mapper namespace="b">
+    <sql id="search">
+        <choose>
+            <when test="condition == 'title'">
+                <!-- 검색조건이 title이라면 -->
+                where title LIKE '%'||#{keyword}||'%'
+            </when>
+            <when test="condition == 'writer'">
+                <!-- 검색조건이 writer라면 -->
+                where writer LIKE '%'||#{keyword}||'%'
+            </when>
+            <when test="condition == 'content'">
+                <!-- 검색조건이 content라면 -->
+                where content LIKE '%'||#{keyword}||'%'
+            </when>
+        </choose>
+    </sql>
+    <select id="selectBoard" resultType="Board" parameterType="SearchCondition">
+        SELECT * FROM boardt
+        <include refid="search" />
+    </select>
+</mapper>

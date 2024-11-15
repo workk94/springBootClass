@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Title</title>
+  </head>
+  <body>
+    <h2>고객을 선택하세요</h2>
+    <form th:action="@{/memberSearch3}" method="get">
+      <input type="checkbox" name="userid" value="acorn" />김세중
+      <input type="checkbox" name="userid" value="acorn4" />김세현
+      <input type="checkbox" name="userid" value="acorn3" />김정석
+      <button>조회</button>
+    </form>
+  </body>
+</html>

@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<!-- namespace : 보통 패키지 이름 들어감 -->
+<mapper namespace="a">
+
+    <select id="selectAll" resultType="Member">
+        SELECT * FROM membertbl
+    </select>
+
+    <select id="searchSelect" resultType="Member" parameterType="java.util.List">
+        SELECT * FROM membertbl
+        WHERE id IN
+        <foreach item="item" collection="list" open="(" separator="," close=")">
+            #{item}
+        </foreach>
+    </select>
+</mapper>

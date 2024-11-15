@@ -13,12 +13,9 @@ public class MemberService {
     @Autowired
     MemberRepository repository;
 
-    public List<Member> getMembers(){
-        return  repository.findAll();
+    public List<Member> getMembers() {
+        return repository.findAll();
     }
-
-
-
 
 
     // 트랜잭션이란?  모두 수행되거나 수행되지 않아야 하는 논리적인 하나의 단위
@@ -26,17 +23,17 @@ public class MemberService {
     // 한 개라도 실패하면 실패로  롤백처리됨
 
 
-   @Transactional
-    public int registerMember(Member member){
+    @Transactional
+    public int registerMember(Member member) {
 
-        repository.insert(member) ;
+        repository.insert(member);
 
-         String  s=null;
-         int r = s.length();
+        String s = null;
+        int r = s.length();
 
         //  if(  s.length() >=5 )  throw new RuntimeException("5보다 크면 안됨 ");
 
-        repository.insert( member);
+        repository.insert(member);
         return 1;
     }
 
