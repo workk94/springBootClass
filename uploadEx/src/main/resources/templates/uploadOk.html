@@ -1,0 +1,12 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>File Upload</title>
+</head>
+<body>
+<h1>show image</h1>
+<img th:src="@{/images/{fileName}(fileName=${fileName})}" alt="img name">
+<a th:href="@{/attach/{fileName}(fileName=${fileName})}"   th:text="${fileName}" ></a>
+
+</body>
+</html>

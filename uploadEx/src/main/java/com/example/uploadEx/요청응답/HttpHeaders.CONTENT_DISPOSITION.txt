@@ -1,0 +1,28 @@
+ 
+ 
+ #######
+ 서버의 응답헤더 
+
+
+##################
+Content-Disposition: attachment; filename="example.txt"
+
+
+
+ attachment는 브라우저에게 리소스를 다운로드해야 함을 나타내는 지시 
+ filename="example.txt"는 다운로드되는 파일의 이름을 지정 
+ 헤더는 웹 애플리케이션에서 파일 다운로드  용도로 사용됨
+
+
+##################################
+ Content-Disposition 헤더의 기본값은 inline (지정하지 않으면 기본값)
+ 
+
+  Content-Disposition: attachment를 지정하지 않으면 브라우저는 기본적으로 inline으로 처리하여
+ 파일을 웹페이지나 브라우저 내에서 바로 표시함
+ 
+ 
+ (다운로드 받고 싶다면 응답헤더의 정보를 변경해야 한다)
+ 
+ 
+ 

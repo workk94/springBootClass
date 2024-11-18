@@ -1,0 +1,21 @@
+max-file-size 기본값: 1MB
+max-request-size 기본값: 10MB
+
+ 파일 업로드 크기를 1MB 이상으로 허용하려면 application.properties 또는 application.yml
+에 spring.servlet.multipart.max-file-size와
+  spring.servlet.multipart.max-request-size를 원하는 크기로 지정
+
+
+
+
+  #############
+  지정해 놓은 크기보다 큰 파일을 업로드 하면
+  413 에러 발생함
+  기본값보다 큰 사이즈를 정하려면 크기를 설정해 줘야함
+  ############
+
+
+  ##########
+   file size:  한 개 파일의 최대 크기
+   request size: 한 번의 요청에서 업로드할 수 있는 전체 데이터의 최대 크기
+  ##########

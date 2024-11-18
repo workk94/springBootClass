@@ -1,0 +1,2 @@
+멀티파트 리졸버가 기본적으로 제공되며, 별도로 설정할 필요가 없음
+대신, application.properties 또는 application.yml에 파일 크기 제한을 설정해야 함

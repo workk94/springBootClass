@@ -1,0 +1,41 @@
+public class ExceptionController{
+    //예외처리가 안되어서 서버 오류발생  확인하자 , 사용자는 오류화면을 보게 된다
+    @RequestMapping("/ex1")
+    public String  test()  throws Exception{
+          throw new Exception("예외가 발생했습니다");
+    }
+
+    // err view 응답된다
+     @RequestMapping("/ex2")
+    public String  test2()   {
+       try{
+          throw new Exception("예외가 발생했습니다");
+        }catch( Exception e) {
+            return "err";
+        }
+    }
+}
+
+
+@ExceptionHandler란
+Controller 내부에서 중복적으로 작성해야  하는  예외를 처리할 수 있다.
+별도의 예외처리를 하는 매서드를 추가하여 중복코드를 제거한다
+
+Controller내부에서 발생하는 예외를 처리함 (범위: 컨트롤러 내부)
+@ExceptionHandler(Exception.class)
+ public String catcher( Exception ex) {
+       return  "error";
+ }
+
+
+@RequestMapping("/ex3)
+public  String method1()  throws Exception{
+       throw new Exception("예외가 발생");
+}
+
+
+@RequestMapping("/ex4)
+public  String method1() throws Exception{
+       throw new Exception("예외가 발생");
+}
+

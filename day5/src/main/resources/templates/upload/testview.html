@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Title</title>
+  </head>
+  <body>
+    <h2>링크, 링크 값 전달하기, 쿼리스트링</h2>
+    <!-- <a href="/a?data1=testData">링크 </a> -->
+    <a th:href="@{/a(data1='testData')}">링크1</a>
+    <a th:href="@{/a(data1=${data1})}">링크2</a>
+    <a th:href="@{/a(data2=${data2}, data3=${data3})}">링크3</a>
+
+    <!-- <a href="/c/${data3}">링크4</a> -->
+    <h2>링크 pathVariable 전달</h2>
+    <a th:href="@{/c/{data4}( data4=${data4})}">링크4</a>
+  </body>
+</html>
