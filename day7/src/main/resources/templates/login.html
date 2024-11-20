@@ -1,0 +1,15 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Title</title>
+  </head>
+  <body>
+    <form th:action="@{/login}" method="post">
+      <input type="text" name="id" th:value="${id}" />
+      <input type="password" name="pw" />
+      <input type="checkbox" name="rmid" th:checked="${id != ''}" />아이디기억
+      <button>로그인</button>
+    </form>
+  </body>
+</html>

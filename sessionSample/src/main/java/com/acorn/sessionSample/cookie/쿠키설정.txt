@@ -1,0 +1,23 @@
+
+## 쿠키 시간설정 ###
+
+ageCookie.setMaxAge(60 * 60 * 24 * 365);
+
+쿠키의 유효 기간을 설정
+60 * 60 * 24 * 365는 1년을 초 단위로 계산한 값
+
+ageCookie.setMaxAge(60 * 60 * 24 * 7); → 쿠키의 유효 기간을 1주일로 설정.
+ageCookie.setMaxAge(0); → 쿠키를 즉시 삭제.
+ageCookie.setMaxAge(-1); → 세션 쿠키로 설정 (브라우저 종료 시 삭제).
+
+
+## 쿠키 경로 설정 ###
+ageCookie.setPath("/");
+
+쿠키가 어떤 경로에서 유효한지 설정 함
+/는 모든 경로에서 유효함을 의미 (애플리케이션 어디서든 가능)
+
+ ####
+ageCookie.setPath("/user"); → /user 경로와 그 하위 경로에서만 유효.
+ageCookie.setPath("/admin"); → /admin 경로와 그 하위 경로에서만 유효.//다른 경로에서는 해당 쿠키가 전달되지 않음
+ageCookie.setPath("/"); → 모든 경로에서 유효.

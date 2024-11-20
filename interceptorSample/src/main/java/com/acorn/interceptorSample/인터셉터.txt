@@ -1,0 +1,93 @@
+
+
+
+서블릿 필터
+필터는 서블릿이 지원하는 수문장 역할을 함
+(공통적인 요청 전처리와 응답 후처리에 사용함!!)
+
+
+HTTP요청  ->  WAS   -> 필터   -> 서블릿  -> 컨트롤러
+
+
+
+필터 제한  (로그인 필터)
+HTTP 요청  -> WAS -> 필터  -> 서블릿  -> 컨트롤러  // 로그인 사용자
+HTTP 요청  -> WAS  -> 필터 ( 적절하지 않은 요청인 경우 서블릿을 호출하지 않음, )// 비로그인 사용자는 로그인화면이 요청되도록 redirect
+
+
+필터체인
+HTTP 요청  -> WAS  -> 필터1 -> 필터2  -> 필터3-> 서블릿 -> 컨트롤러
+
+
+
+######################################################################
+스프링  인터셉터 !!!
+(로깅남기기, 성능측정,세션체크)
+
+스프링 인터셉터:  서블릿 필터와 같이 웹과 관련된 공통 관심 사항을 효과적으로 해결할 수 있는 기술
+스프링 인터셉터는  스프링 MVC가 제공하는 기술
+
+
+스프링 인터셉터 흐름
+HTTP -> WAS -> 필터  -> 서블릿(dispatcher 서블릿) -> 스프링 인터셉터  -> 컨트롤러
+
+
+- 스프링 인터셉터는 디스패처 서블릿과 컨트롤러 사이에서 컨트롤러 호출 직전에 호출된다
+- 스프링 인터셉터는 스프링  MVC가 제공하는 기능이기 때문에 디스패처 서블릿 이후에 등장함
+- 스프링 인터셉터에도 URL 패턴을 적용할 수 있음  , 매우 정밀하게 적용가능
+
+
+스프링 인터셉터 제한
+HTTP요청  -> WAS  -> 필터  -> 서블릿(디스패처 서블릿)  -> 스프링 인터셉터  ->컨트롤러
+HTTP요청  -> WAS  -> 필터  -> 서블릿(디스패처 서블릿)  -> 스프링 인터셉터( 비로그인 사용자 , 컨트롤러 호출하지 않음, 로그인화면으로  다시 재요청)
+
+
+
+스프링 인터셉터 동작
+
+1. preHandle    (컨트롤러 호출전에 작동함)
+2. postHandle   (컨트롤러 반환시에 작동함)
+3. afterCompletion ( 뷰가 렌더링 된 이후에 호출된다),응답후
+
+
+
+예외 발생시 :
+ postHandle은 호출되지 않는다
+ afterCompletion은 항상 호출됨
+
+
+
+
+ WebConfig 인터셉터 등록
+
+@Configuration
+public class WebConfig implements WebMvcConfigurer {
+
+    @Override
+    public void addInterceptors(InterceptorRegistry registry) {
+        registry.addInterceptor(new SessionInterceptor())
+                .addPathPatterns("/*.do", "/*.acorn");
+
+
+        /* 두 번째 인터셉터 등록
+        registry.addInterceptor(new LoggingInterceptor())
+                .addPathPatterns("/api/**"); // 예: "/api/**" 패턴에 적용
+
+       */
+
+    }
+}
+
+
+
+1. 인터셉터로 등록하기
+2. order(1) : 인터셉터의 호출 순서룰 지정할 수 있다
+3. addPathPatterns : 인터셉터를 적용할 URL 패턴을 지정
+
+
+
+
+
+
+
+

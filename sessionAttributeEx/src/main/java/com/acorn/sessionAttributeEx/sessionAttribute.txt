@@ -1,0 +1,15 @@
+ @SessionAttributes의 특징:
+ 세션에 데이터를 저장:
+  @SessionAttributes를 사용하면 모델에서 sessionId 속성 값을 자동으로 세션에 저장
+  세션에 값이 없는 경우 처리: 세션에 sessionId 값이 없으면 @SessionAttribute가 null을 반환 함
+
+
+ 세션 속성 관리: 세션에 속성을 추가하고,
+ 해당 속성은 세션 종료까지 유지되며,
+  필요에 따라 SessionStatus를 통해 삭제할 수 있음
+
+ @SessionAttributes vs HttpSession:
+ **@SessionAttributes**는 모델 속성을 세션에 자동으로 저장하고 가져오는 데 편리함
+ **HttpSession**은 세션을 직접 조작할 때 사용합
+   HttpSession을 사용하면 세션에서 데이터를 저장하고 불러오는 작업을 수동으로 처리해야 함
+

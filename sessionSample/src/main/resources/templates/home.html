@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+  <title>Home</title>
+</head>
+<body>
+<h1>Home</h1>
+
+<!-- 로그인되지 않았을 경우 로그인 링크 표시 -->
+<div th:if="${session.sessionId == null}">
+  <a th:href="@{/login/login}">로그인</a>
+</div>
+
+
+
+
+<!-- 로그인된 경우 로그아웃과 게시판 링크 표시 -->
+<div th:if="${session.sessionId != null}">
+  <a th:href="@{/login/logOut}">로그아웃</a>
+  <a th:href="@{/board/list}">게시판입니다</a>
+</div>
+
+<h2>로그인상황에 따른 login / loginOut 보여주기</h2>
+
+<!-- 로그인 상태에 따라 다르게 표시 -->
+<a th:href="@{${ session.sessionId == null ? '/login/login' : '/login/logOut'}}">
+  <span th:text="${session.sessionId == null ? '로그인' : '로그아웃'}"></span>
+</a>
+
+</body>
+</html>
