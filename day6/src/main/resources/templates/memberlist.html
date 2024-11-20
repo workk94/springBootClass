@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Title</title>
+  </head>
+  <body>
+    <h2>고객목록</h2>
+    <div th:each="item : ${list}">
+      <span th:text="${item.m_id}"></span>
+      <span th:text="${item.m_pw}"></span>
+      <span th:text="${item.m_name}"></span>
+      <span th:text="${item.m_tel}"></span>
+    </div>
+
+    <!-- 이전 -->
+    <span th:if="${pageHandler.grpStartPage > 1}">
+      <a th:href="@{/list(currentPage=${pageHandler.grpStartPage - 1})}"
+        >이전</a
+      >
+    </span>
+
+    <!-- 페이지 번호 -->
+    <span
+      th:each="page : ${#numbers.sequence(pageHandler.grpStartPage, pageHandler.grpEndPage)}"
+    >
+      <a th:href="@{/list(currentPage=${page})}" th:text="${page}"></a>
+    </span>
+
+    <!-- 다음 -->
+    <span th:if="${pageHandler.grpEndPage < pageHandler.totalPage}">
+      <a th:href="@{/list(currentPage=${pageHandler.grpEndPage + 1})}">다음</a>
+    </span>
+  </body>
+</html>

@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Title</title>
+  </head>
+  <!-- 띄어쓰면 안됨 ${data} ?: -->
+  <body>
+    <h2>엘비스 연산자?:, null처리</h2>
+    <div th:text="${data}?: '데이터가 없습니다'"></div>
+    <div th:text="${data2}?: '데이터가 없습니다^^^^^^^^^^^^^^^^^^^'">
+      데이터가 없습니다
+    </div>
+
+    <h2>no operation</h2>
+    <p>모델의 값이 널이면 타임리프가 해석되지 않음</p>
+    <div th:text="${data}?: _"></div>
+    <div th:text="${data2}?: _">데이터가 없습니다</div>
+  </body>
+</html>

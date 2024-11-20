@@ -1,0 +1,29 @@
+매개변수의 타입 , 이름 추론   설정
+
+
+
+
+1.build.gradle  맨 아래 추구
+
+
+
+tasks.withType(JavaCompile) {
+	options.compilerArgs << "-parameters"
+}
+
+
+
+2. 파일  ->settings  (설정)
+빌드.실행.배포 -> 컴파일러 -> 자바컴파일러 - >    Additional command line  Parameters    칸에    -parameters  추가 (값을 추가)
+
+
+
+
+3. 재컴파일 ( 빌드- > Rebuild)
+
+
+
+
+
+
+

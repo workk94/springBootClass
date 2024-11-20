@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Title</title>
+  </head>
+  <body>
+    <div th:each="item, start : ${list}">
+      <span th:text="${start.index}">index</span>
+      <span th:text="${start.count}">count</span>
+      <span th:text="${item.id}">ID</span>
+      <span th:text="${item.pw}">PW</span>
+      <span th:text="${item.name}">NAME</span>
+    </div>
+  </body>
+</html>

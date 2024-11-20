@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+
+</head>
+<body>
+
+
+<div th:each="item, stat : ${list}">
+    <span th:text="${stat.count}"></span>
+    <span th:text="${stat.index  }"></span>
+    <span th:text="${item.id}"></span>
+    <span th:text="${item.pw}"></span>
+    <span th:text="${item.email}"></span>
+</div>
+
+</body>
+</html>

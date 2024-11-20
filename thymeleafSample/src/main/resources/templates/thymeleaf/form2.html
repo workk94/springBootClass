@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+<!--
+
+
+
+<form action="/form"  method="post">
+    <input type="text" id="username" name="username" value="hong"  />
+    <input type="text" id="email" name="email" value="hong@gmail.com"  />
+
+<button>로그인</button>
+  -->
+<h2>로그인</h2>
+
+  <form  th:action="@{/form2}"     method="post">
+
+    <!--
+    ?.는 member 객체가 null인 경우 에러를 피하고,
+     값이 없으면 빈 문자열을 반환하도록 안전하게 처리하는 null-safe 연산자
+
+     즉 null이 아니면 객체의 속성값을 얻어온다, getter()임
+    -->
+
+
+    <input type="text"   th:value="${member?.username}" name="username"  />
+    <input type="text"   th:value="${member?.email}" name="email" />
+
+    <button>로그인</button>
+
+</form>
+</body>
+</html>

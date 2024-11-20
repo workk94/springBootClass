@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        .a {
+            color: green;
+            font-weight: bold;
+        }
+        .b {
+            color: red;
+        }
+
+    </style>
+</head>
+<body>
+
+
+<h1>조건에 맞는거에 클래스 추가하기 </h1>
+
+<p th:classappend="${su >= 10} ? 'a' : 'b'">
+    숫자: <span th:text="${su}"></span>
+</p>
+
+</body>
+</html>
