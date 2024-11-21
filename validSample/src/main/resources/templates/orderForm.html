@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+
+    <style>
+        .aa{
+
+           color:red;
+        }
+    </style>
+</head>
+<body>
+<form th:action="@{/order}" th:object="${order}" method="post">
+    <label for="code">Code:</label>
+    <input type="text" th:field="*{code}" id="code" /><br><br>
+
+
+
+    <label for="name">Name:</label>
+    <input type="text" th:field="*{name}" id="name" /><br><br>
+
+    <div th:if="${errors != null and errors.containsKey('name')}"
+         th:text="${errors.get('name')}"></div>
+
+    <label for="qty">Qty:</label>
+    <input type="text" th:field="*{qty}" id="qty" /><br><br>
+    <div th:if="${errors != null and errors.containsKey('qty')}"
+         th:text="${errors.get('qty')}"></div>
+
+    <label for="price">Price:</label>
+    <input type="text" th:field="*{price}" id="price" /><br><br>
+    <div th:if="${errors != null and errors.containsKey('price')}"
+         th:text="${errors.get('price')}">
+    </div>
+
+    <label for="amount">Amount:</label>
+    <input type="text" th:field="*{amount}" id="amount" /><br><br>
+    <div th:if="${errors != null and errors.containsKey('amount')}"
+         th:text="${errors.get('amount')}">
+
+    </div>
+
+    <input type="submit" value="Order" />
+</form>
+
+</body>
+</html>

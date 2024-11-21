@@ -1,0 +1,33 @@
+
+
+Bean Validation
+
+특정 필드에 대한 검증 로직은 대부분 빈값을 체크하거나 특정크기를 넘는지와 같은 일반적인 로직처리이다
+
+
+애너테이션으로 처리하게 해줌
+
+@NotBlank    ,널이아니고 빈문자열이 아님
+
+@NotNUll      널이 아니다
+
+@Range(min =100 , max=1000)  :특정 범위
+
+@Max(999)  : 최대999
+
+
+
+Bean Validation
+############################
+검증 로직을 모든 프로젝트에 적용할 수 있게 공통화하고 표준화 한것이 Bean Validation
+Bean Validation을 활용하면 애너테이션으로 검증로직을 매우 편리하게 적용할 수 있음
+############################
+
+
+
+Bean Validator는  기술표준임 -> 인터페이스
+-구현체 하이버네이트 Validator 사용( 스프링부트)
+
+
+하이버네이터 Validator관련링크
+공식사이트 :http://hibernate.org/validator

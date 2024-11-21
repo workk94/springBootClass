@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+
+<div th:fragment="footer">
+  <div class="footer">
+    <h1>에이컨 아카데미</h1>
+  </div>
+</div>
+
+
+<div th:fragment="footerParam( param1, param2 )">
+  <div class="footer">
+    <h1 th:text="${param1}"></h1>
+    <h1 th:text="${param2}"></h1>
+  </div>
+</div>
+
+</html>

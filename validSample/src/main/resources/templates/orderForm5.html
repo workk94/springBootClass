@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+
+    <style>
+        .aa{
+
+           color:red;
+        }
+    </style>
+</head>
+<body>
+
+<form th:action="@{/order5}" th:object="${order}" method="post">
+    <label for="code">Code:</label>
+    <input type="text" th:field="*{code}" id="code" /><br><br>
+
+    <label for="name">Name:</label>
+    <input type="text" th:field="*{name}" id="name" /><br><br>
+    <!-- 에러가 있는 경우만  errors 필드가 적용된다 if문 필요없음 -->
+    <div th:errors="*{name}">상품명 오류</div>
+
+    <label for="qty">Qty:</label>
+    <input type="text" th:field="*{qty}" id="qty" /><br><br>
+    <div th:errors="*{qty}">수량 오류</div>
+
+    <label for="price">Price:</label>
+    <input type="text" th:field="*{price}" id="price" /><br><br>
+    <div th:errors="*{price}">단가 오류</div>
+
+    <label for="amount">Amount:</label>
+    <input type="text" th:field="*{amount}" id="amount" /><br><br>
+    <div th:errors="*{amount}">금액 오류</div>
+
+    <input type="submit" value="Order" />
+</form>
+</body>
+</html>

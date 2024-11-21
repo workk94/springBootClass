@@ -1,0 +1,13 @@
+
+
+
+
+파라미터 목록
+
+objectName : 객체이름
+field   :필드명
+rejectValue  : 사용자가 입력한 값  (거절된 값)
+bindingFailure :  타입 오류 같은 바인딩 실패인지, 검증실패인지
+codes : 메시지코드
+arguments : 메시지에서 사용하는 인자
+defaultMessage :  기본 오류 메시지

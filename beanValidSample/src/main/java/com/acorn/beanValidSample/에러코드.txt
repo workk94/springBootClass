@@ -1,0 +1,6 @@
+NotBlank.order.code=상품코드를 입력하세요
+NotBlank.order.name=상품 이름을 입력하세요
+typeMismatch=숫자로 입력하세요
+NotNull.order.qty=수량을 입력하세요
+typeMismatch.order.price=금액을 숫자로 입력하세요
+typeMismatch.price=숫자로 입력하세요
